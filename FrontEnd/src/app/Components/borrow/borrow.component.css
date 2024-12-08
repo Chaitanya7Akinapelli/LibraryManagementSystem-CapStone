@@ -1,0 +1,85 @@
+/* General container styling */
+.available-books, .borrowed-books {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Headings */
+  .available-books h3, .borrowed-books h3 {
+    color: #ff416c; /* Eye-catching color */
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ff416c;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  
+  /* Book list */
+  .available-books ul, .borrowed-books ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Individual book item */
+  .available-books li, .borrowed-books li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  /* Hover effect */
+  .available-books li:hover, .borrowed-books li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Buttons */
+  .available-books button, .borrowed-books button {
+    background-color: #ff416c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .available-books button:hover, .borrowed-books button:hover {
+    background-color: #e0355c;
+  }
+  
+  /* Due date paragraph */
+  .borrowed-books p {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .available-books, .borrowed-books {
+      margin: 10px;
+      padding: 15px;
+    }
+  
+    .available-books li, .borrowed-books li {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .available-books button, .borrowed-books button {
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
+  

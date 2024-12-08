@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="library-container">
+  <div class="header">
+    <img src="assets/book-borrow.jpg" alt="Library Header" class="header-image" />
+  </div>
+
+  <div class="content">
+    <h2>Enter the email of the user to return</h2>
+    <div class="search-section">
+      <input
+        type="text"
+        [(ngModel)]="userEmail"
+        placeholder="Enter User Email"
+        class="email-input"
+      />
+      <button (click)="fetchBorrowedBooks()" class="fetch-button">
+        Fetch Borrowed Books
+      </button>
+    </div>
+
+    <div *ngIf="borrowedBooks.length > 0" class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of borrowedBooks">
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.bookIsbn }}</td>
+            <td>
+              <button (click)="returnBook(book.bookIsbn)" class="return-button">
+                Return
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="borrowedBooks.length === 0" class="no-books">
+      <p>No borrowed books found for this user.</p>
+    </div>
+  </div>
+</div>

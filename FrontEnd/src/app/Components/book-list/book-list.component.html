@@ -1,0 +1,33 @@
+<div>
+  <h2>Book Catalog</h2>
+  <form (ngSubmit)="searchBooks()">
+    <input type="text" [(ngModel)]="searchQuery.title" placeholder="Search by Title" name="title" />
+    <input type="text" [(ngModel)]="searchQuery.author" placeholder="Search by Author" name="author" />
+    <input type="text" [(ngModel)]="searchQuery.genre" placeholder="Search by Genre" name="genre" />
+    <button type="submit">Search</button>
+  </form>
+
+  <ul>
+    <h2>Delete books</h2>
+    <li *ngFor="let book of books">
+      {{ book.title }} by {{ book.author }}
+      <button (click)="deleteBook(book.bookId)">Delete</button>
+    </li>
+  </ul>
+
+  <h3>Add a New Book</h3>
+  <form (ngSubmit)="addBook()">
+    <input type="text" [(ngModel)]="newBook.title" placeholder="Title" name="title" required />
+    <input type="text" [(ngModel)]="newBook.author" placeholder="Author" name="author" required />
+    <input type="text" [(ngModel)]="newBook.genre" placeholder="Genre" name="genre" />
+    <input type="number" [(ngModel)]="newBook.publicationYear" placeholder="Year" name="year" />
+    <input type="text" [(ngModel)]="newBook.isbn" placeholder="ISBN" name="isbn" />
+    <input type="number" [(ngModel)]="newBook.copiesAvailable" placeholder="Copies" name="copies" />
+    <button type="submit">Add Book</button>
+  </form>
+
+  <div>
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 0">Previous</button>
+    <button (click)="goToNextPage()" [disabled]="currentPage === totalPages - 1">Next</button>
+  </div>
+</div>

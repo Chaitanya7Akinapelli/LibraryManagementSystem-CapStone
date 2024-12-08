@@ -1,0 +1,71 @@
+.delete-book-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #d90939;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  table.book-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table.book-table th,
+  table.book-table td {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  table.book-table th {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ff416c;
+    color: white;
+    font-weight: bold;
+  }
+  
+  table.book-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  table.book-table tbody tr:hover {
+    background-color: #ffe0e6;
+  }
+  
+  .delete-btn {
+    padding: 8px 12px;
+    background-color: #ff416c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-btn:hover {
+    background-color: #b3329b;
+  }
+  
+  .delete-btn:focus {
+    outline: none;
+  }
+  
+  table.book-table td {
+    word-wrap: break-word;
+  }
+  

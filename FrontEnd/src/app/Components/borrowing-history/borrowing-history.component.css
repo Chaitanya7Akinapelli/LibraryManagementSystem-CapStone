@@ -1,0 +1,124 @@
+* {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4f7fb;
+}
+
+.borrowing-history-container {
+  display: flex;
+  height: 100vh;
+  padding: 20px;
+  gap: 20px;
+}
+
+.left-section {
+  width: 40%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.borrowing-image {
+  width: 700px;
+  height: 700px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.borrowing-content {
+  color: #fff;
+  text-align: center;
+}
+
+.borrowing-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.borrowing-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.right-section {
+  width: 60%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.borrowing-overview {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.borrowing-overview > div {
+  flex: 1;
+  text-align: center;
+  padding: 15px;
+  background: #ffe3e9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.borrowing-overview h3 {
+  font-size: 1.4rem;
+  color: #ff416c;
+}
+
+.borrowing-history h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.borrowing-history table {
+  width: 100%;
+  margin-top: 20px;
+  border: 1px #fb8aa4;
+}
+
+.borrowing-history table th, 
+.borrowing-history table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.borrowing-history table thead {
+  color: #fff;
+  background-color: #ff416c;
+}
+
+.borrowing-history table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.borrowing-history table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+  .left-section, .right-section {
+    width: 100%;
+    height: auto;
+  }
+
+  .left-section {
+    height: 50vh;
+  }
+
+  .right-section {
+    height: auto;
+  }
+}

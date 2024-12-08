@@ -1,0 +1,33 @@
+<body>
+<div class="login-container">
+  <div class="login-section">
+    <h3 class="sign-in-title">Sign In</h3>
+    <div class="login-credentials">
+      <label for="username">Email</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="email" 
+        placeholder="Email"
+        required
+      />
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password" 
+        placeholder="Password"
+        required
+      />
+
+      <button class="login-btn" (click)="login()">Sign In</button>
+    </div>
+  </div>
+  <div class="welcome-section">
+    <h2 class="welcome-title">New Here?</h2>
+    <p class="welcome-subtitle">Sign up now to visit our website</p>
+    <a (click)="goToRegistration()" class="register-btn">Sign Up</a>
+  </div>
+</div>
+</body>

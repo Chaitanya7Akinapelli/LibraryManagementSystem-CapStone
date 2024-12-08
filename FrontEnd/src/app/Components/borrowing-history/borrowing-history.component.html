@@ -1,0 +1,45 @@
+<app-user-nav-bar></app-user-nav-bar>
+<div class="borrowing-history-container">
+  <div class="left-section">
+    <div class="borrowing-content">
+      <img src="./assets/borrowing-book.webp" alt="Borrow Book" class="borrowing-image">
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div class="borrowing-overview">
+      <div>
+        <h3>Most Borrowed Book</h3>
+        <p>{{ borrowingData.mostBorrowedBook || 'No books borrowed' }}</p>
+      </div>
+      <div>
+        <h3>Total Penalties Paid</h3>
+        <p>{{ borrowingData.totalPenaltiesPaid | currency }}</p>
+      </div>
+    </div>
+
+    <div class="borrowing-history">
+      <h3>Borrowing History</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Book ISBN</th>
+            <th>Borrow Date</th>
+            <th>Due Date</th>
+            <th>Return Date</th>
+            <th>Penalty Paid</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let history of borrowingData.borrowingHistory">
+            <td>{{ history.bookIsbn }}</td>
+            <td>{{ history.borrowDate | date }}</td>
+            <td>{{ history.dueDate | date }}</td>
+            <td>{{ history.returnDate ? (history.returnDate | date) : 'Not Returned' }}</td>
+            <td>{{ history.penaltyPaid | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

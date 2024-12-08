@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="delete-book-container">
+  <h2>Delete Books</h2>
+  <div *ngIf="books.length === 0">No books available to delete.</div>
+  
+  <table *ngIf="books.length > 0" class="book-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.genre }}</td>
+        <td>
+          <button class="delete-btn" (click)="deleteBook(book.bookId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

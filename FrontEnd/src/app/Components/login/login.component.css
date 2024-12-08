@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f7f9fc;
+}
+.header {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold; 
+  color: #333;
+  margin-top: 30%;
+  width: 100%;
+}
+.login-container {
+  margin-top: 20px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.login-section {
+  width: 30%;
+  padding: 50px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+.sign-in-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-credentials {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-credentials label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+}
+
+.login-credentials input {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.remember-forgot a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff416c;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #e5375e;
+}
+
+.welcome-section {
+  width: 30%;
+  height:52%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+  border-radius: 0 10px 10px 0;
+}
+
+.welcome-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.welcome-subtitle {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.register-btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  color: #ff416c;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.register-btn:hover {
+  color: white;
+  background-color: #ff416c;
+}

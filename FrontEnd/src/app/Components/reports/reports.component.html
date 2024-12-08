@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<body>
+<div class="admin-dashboard">
+  <h1>Admin Dashboard</h1>
+  <div class="kpi-section">
+    <div class="kpi-card" *ngFor="let metric of kpiArray">
+      <div class="kpi-circle" [style.background-color]="metric.color">
+        <h2>{{ metric.value }}</h2>
+      </div>
+      <p>{{ metric.label }}</p>
+    </div>
+  </div>
+
+  <div class="kpi-section">
+    <div class="kpi-card" *ngFor="let metric of additionalMetricsArray">
+      <div class="kpi-circle" [style.background-color]="metric.color">
+        <h2>{{ metric.value }}</h2>
+      </div>
+      <p>{{ metric.label }}</p>
+    </div>
+  </div>
+  </div>
+</body>

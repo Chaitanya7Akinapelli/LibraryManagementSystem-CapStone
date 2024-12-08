@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div class="search-container">
+  <div class="form-section">
+    <h2>Search Books</h2>
+    <p class="quote">"A book is a dream that you hold in your hand." - Neil Gaiman</p>
+    <form (ngSubmit)="searchBooks()">
+      <input type="text" [(ngModel)]="searchQuery.title" placeholder="Search by Title" name="title" />
+      <input type="text" [(ngModel)]="searchQuery.author" placeholder="Search by Author" name="author" />
+      <input type="text" [(ngModel)]="searchQuery.genre" placeholder="Search by Genre" name="genre" />
+      <button type="submit">Search</button>
+    </form>
+  
+    <ul>
+      <h4>Results found for your search</h4>
+      <li *ngFor="let book of books">
+        {{ book.title }} by {{ book.author }}
+      </li>
+    </ul>
+  </div>
+  
+  <div class="image-section">
+    <img src="./assets/search-image.jpg" alt="Bookshelf Image" />
+  </div>
+</div>
