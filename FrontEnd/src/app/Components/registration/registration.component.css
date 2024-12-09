@@ -109,4 +109,44 @@
   .register-btn:hover {
     background-color: #e5375e;
   }
+
+  .otp-section {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.otp-section label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+.otp-section input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.otp-btn {
+    padding: 12px 20px;
+    background-color: #ff416c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.otp-btn:hover {
+    background-color: #e5375e;
+}
+
   
