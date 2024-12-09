@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { BookService } from '../../Services/book.service';
 import { UserService } from '../../Services/user.service';
-import { AddBookComponent } from '../add-book/add-book.component';
-import { DeleteBookComponent } from '../delete-book/delete-book.component';
-import { SearchBookComponent } from '../search-book/search-book.component';
+
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [NavbarComponent,AddBookComponent,DeleteBookComponent,SearchBookComponent],
+  imports: [NavbarComponent],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })

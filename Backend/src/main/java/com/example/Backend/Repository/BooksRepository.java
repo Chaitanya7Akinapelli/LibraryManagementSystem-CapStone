@@ -20,7 +20,6 @@ public interface BooksRepository extends JpaRepository<Book, Long> {
     Page<Book> findByAuthorContainingAndGenreContaining(String author, String genre, Pageable pageable);
     Book findByIsbn(String isbn);
 
-    // Correctly place this query here
     @Query("SELECT b FROM Book b WHERE b.isbn NOT IN :isbns AND b.copiesAvailable > 0")
     List<Book> findAvailableBooksNotBorrowed(@Param("isbns") List<String> isbns);
 

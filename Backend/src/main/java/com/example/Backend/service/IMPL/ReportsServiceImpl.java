@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,12 +39,10 @@ public class ReportsServiceImpl implements ReportsService {
     public List<Reports> generateAllReports() {
         List<Reports> generatedReports = new ArrayList<>();
 
-        // Example: Add logic for each type of report
         generatedReports.add(generateReport("PopularBooks", "System"));
         generatedReports.add(generateReport("OverdueRecords", "System"));
         generatedReports.add(generateReport("MostSearchedBook", "System"));
 
-        // Save generated reports to the database
         reportsRepository.saveAll(generatedReports);
 
         return generatedReports;
@@ -57,7 +54,6 @@ public class ReportsServiceImpl implements ReportsService {
         report.setGeneratedBy(generatedBy);
         report.setDateGenerated(LocalDate.now());
 
-        // Example data (adjust logic for actual data generation)
         switch (reportType) {
             case "PopularBooks":
                 report.setData("Report on popular books...");
@@ -79,7 +75,6 @@ public class ReportsServiceImpl implements ReportsService {
     }
 
     private String getOverdueRecordsReport() {
-        // Example: Fetch overdue borrow records
         List<BorrowedBooks> overdueRecords = borrowedBooksRepository.findOverdueRecords(LocalDate.now());
         return overdueRecords.stream()
                 .map(record -> "User: " + record.getUserEmail() + ", Book: " + record.getBookIsbn() + ", Due: " + record.getDueDate())
@@ -87,7 +82,6 @@ public class ReportsServiceImpl implements ReportsService {
     }
 
     private String getMostSearchedBooksReport() {
-        // Example: Fetch most frequently searched books
         List<String> mostSearchedBooks = searchLogsRepository.findMostSearchedBooks();
         return String.join("\n", mostSearchedBooks);
     }

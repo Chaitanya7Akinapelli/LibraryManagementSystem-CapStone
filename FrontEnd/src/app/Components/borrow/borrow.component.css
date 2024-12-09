@@ -1,4 +1,3 @@
-/* General container styling */
 .available-books, .borrowed-books {
     margin: 20px;
     padding: 20px;
@@ -7,9 +6,8 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
-  /* Headings */
   .available-books h3, .borrowed-books h3 {
-    color: #ff416c; /* Eye-catching color */
+    color: #ff416c;
     font-size: 1.5rem;
     text-transform: uppercase;
     border-bottom: 2px solid #ff416c;
@@ -17,13 +15,11 @@
     margin-bottom: 15px;
   }
   
-  /* Book list */
   .available-books ul, .borrowed-books ul {
     list-style: none;
     padding: 0;
   }
   
-  /* Individual book item */
   .available-books li, .borrowed-books li {
     display: flex;
     align-items: center;
@@ -36,13 +32,11 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   
-  /* Hover effect */
   .available-books li:hover, .borrowed-books li:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
   
-  /* Buttons */
   .available-books button, .borrowed-books button {
     background-color: #ff416c;
     color: #fff;
@@ -58,14 +52,12 @@
     background-color: #e0355c;
   }
   
-  /* Due date paragraph */
   .borrowed-books p {
     margin-top: 5px;
     font-size: 0.9rem;
     color: #555;
   }
   
-  /* Responsive design */
   @media (max-width: 768px) {
     .available-books, .borrowed-books {
       margin: 10px;

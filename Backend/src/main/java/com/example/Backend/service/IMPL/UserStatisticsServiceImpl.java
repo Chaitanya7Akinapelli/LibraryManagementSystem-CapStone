@@ -22,17 +22,13 @@ public class UserStatisticsServiceImpl implements UserStatisticsService {
 
     @Override
     public Map<String, Object> getUserBorrowingHistory(String userEmail) {
-        // Fetch borrowing history
         List<BorrowedBooks> borrowedBooks = borrowedBooksRepository.findByUserEmail(userEmail);
 
-        // Fetch return history
         List<Return> returns = returnRepository.findByUserEmail(userEmail);
 
-        // Most borrowed book
         List<Object[]> mostBorrowedBookResults = borrowedBooksRepository.findMostBorrowedBookByUser(userEmail);
         String mostBorrowedBook = mostBorrowedBookResults.isEmpty() ? "N/A" : (String) mostBorrowedBookResults.get(0)[0];
 
-        // Total penalties paid
         double totalPenaltiesPaid = returns.stream()
                 .mapToDouble(Return::getPenaltyAmount)
                 .sum();

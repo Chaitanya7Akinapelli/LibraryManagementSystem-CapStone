@@ -21,14 +21,14 @@ public class EmailSenderService {
         try {
             MimeMessage message = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom("b21ai007@kitsw.ac.in");  // Replace with the sender email
+            helper.setFrom("b21ai007@kitsw.ac.in");
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(body);
 
             javaMailSender.send(message);
         } catch (MessagingException | MailException e) {
-            e.printStackTrace();  // Handle errors appropriately
+            e.printStackTrace();
         }
     }
 }

@@ -38,16 +38,14 @@ export class BookListComponent implements OnInit {
   }
 
   searchBooks(): void {
-    const page = this.currentPage;  // Use the current page for search results
+    const page = this.currentPage;
     const size = 10;
     const email = this.userEmail ?? '';
   
-    // Make the request with page and size along with the search query
     this.bookService.searchBooks(this.searchQuery, email, page, size).subscribe((data) => {
-      this.books = data.content;  // Paginated result content
-      this.resultsCount = data.totalElements;  // The total count of results
+      this.books = data.content;
+      this.resultsCount = data.totalElements;
   
-      // Alert on search completion
       if (this.resultsCount > 0) {
         alert(`Found ${this.resultsCount} books matching your search.`);
       } else {
@@ -70,7 +68,7 @@ export class BookListComponent implements OnInit {
   deleteBook(bookId: number): void {
     this.bookService.deleteBook(bookId).subscribe({
       next: () => {
-        this.getPaginatedBooks(this.currentPage);  // Refresh after deletion
+        this.getPaginatedBooks(this.currentPage); 
         alert('Book deleted successfully!');
       },
       error: (error) => {
@@ -81,9 +79,9 @@ export class BookListComponent implements OnInit {
 
   addBook(): void {
     this.bookService.addBook(this.newBook).subscribe(() => {
-      this.getPaginatedBooks(this.currentPage);  // Refresh after adding
+      this.getPaginatedBooks(this.currentPage);
       alert('New book added successfully!');
-      this.resetNewBookForm();  // Clear form after adding the book
+      this.resetNewBookForm();
     }, (error) => {
       alert('Failed to add the book. Please try again.');
     });
@@ -117,7 +115,6 @@ export class BookListComponent implements OnInit {
     }
   }
 
-  // Helper function to reset the new book form
   resetNewBookForm(): void {
     this.newBook = { title: '', author: '', genre: '', publicationYear: null, isbn: '', copiesAvailable: null };
   }

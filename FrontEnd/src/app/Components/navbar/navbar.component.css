@@ -1,4 +1,3 @@
-/* Top Bar */
 .top-bar {
     background-color: #fff;
     padding: 10px 0;
@@ -15,7 +14,6 @@
     justify-items: center;
   }
   
-  /* Navbar */
   .navbar-container {
     background-color: #e6345d;
     padding: 15px 0;

@@ -18,8 +18,8 @@ export class BookService {
   searchBooks(query: { title?: string; author?: string; genre?: string}, userEmail: string, page: number, size: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/search`, {
       params: {
-        ...query, // Spread query parameters (title, author, genre)
-        userEmail, // Send the user email
+        ...query,
+        userEmail,
         page: page.toString(),
         size: size.toString(),
       },

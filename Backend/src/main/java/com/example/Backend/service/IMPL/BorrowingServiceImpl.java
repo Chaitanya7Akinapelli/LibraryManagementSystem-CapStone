@@ -68,7 +68,6 @@ public class BorrowingServiceImpl implements BorrowingService {
 
     @Override
     public void returnBookByAdmin(String userEmail, String bookIsbn, String adminEmail) {
-        // Find the borrowed book record
         Optional<BorrowedBooks> borrowedBookOptional = borrowedBooksRepository.findByUserEmailAndBookIsbnAndStatus(userEmail, bookIsbn, "BORROWED");
 
         if (borrowedBookOptional.isEmpty()) {
@@ -76,13 +75,10 @@ public class BorrowingServiceImpl implements BorrowingService {
         }
 
         BorrowedBooks borrowedBook = borrowedBookOptional.get();
-
-        // Update the borrowed book status to "RETURNED"
         borrowedBook.setReturnDate(LocalDate.now());
         borrowedBook.setStatus("RETURNED");
         borrowedBooksRepository.save(borrowedBook);
 
-        // Update the availability of the book by marking it as available
         Book book = bookRepository.findByIsbn(bookIsbn); // No need for Optional here
         if (book != null) {
             book.setAvailable(true);  // Mark the book as available
@@ -91,12 +87,10 @@ public class BorrowingServiceImpl implements BorrowingService {
             throw new IllegalStateException("Book with ISBN " + bookIsbn + " does not exist.");
         }
 
-        // Calculate penalty if the book is overdue
         LocalDate currentDate = LocalDate.now();
         long overdueDays = currentDate.toEpochDay() - borrowedBook.getDueDate().toEpochDay();
         double penaltyAmount = overdueDays > 0 ? overdueDays * 5 : 0; // Example penalty of 5 units per day
 
-        // Create a return entry in the Returns table
         Return returnRecord = new Return();
         returnRecord.setUserEmail(userEmail);
         returnRecord.setBookIsbn(bookIsbn);
@@ -123,14 +117,11 @@ public class BorrowingServiceImpl implements BorrowingService {
 
     @Override
     public List<Book> getUserAvailableBooks(String userEmail) {
-        // Fetch the list of ISBNs of books already borrowed by the user
         List<String> borrowedIsbns = borrowedBooksRepository.findByUserEmail(userEmail).stream()
                 .filter(borrowedBook -> "BORROWED".equalsIgnoreCase(borrowedBook.getStatus()))
                 .map(BorrowedBooks::getBookIsbn)
                 .collect(Collectors.toList());
 
-        // Fetch books that are available and not already borrowed by the user
-        // Correctly query BooksRepository now
         return bookRepository.findAvailableBooksNotBorrowed(borrowedIsbns);
     }
 
@@ -138,13 +129,10 @@ public class BorrowingServiceImpl implements BorrowingService {
     public void sendOverdueNotifications(String userEmail) {
         System.out.println(userEmail);
 
-        // Fetch overdue books
         List<BorrowedBooks> overdueBooks = borrowedBooksRepository.findOverdueBooks(LocalDate.now());
 
-        // Get the current date to compare for overdue books
         LocalDate currentDate = LocalDate.now();
 
-        // Loop through each overdue book and send notification
         overdueBooks.forEach(borrowedBook -> {
             String bookIsbn = borrowedBook.getBookIsbn();
             Book book = bookRepository.findByIsbn(bookIsbn);
@@ -152,7 +140,6 @@ public class BorrowingServiceImpl implements BorrowingService {
             long daysOverdue = currentDate.toEpochDay() - borrowedBook.getDueDate().toEpochDay();
             long penalty = daysOverdue > 0 ? daysOverdue : 0;
 
-            // Create overdue message
             String message = String.format("Dear %s,\n\n"
                             + "Your borrowed book \"%s\" (ISBN: %s) is overdue.\n"
                             + "Due Date: %s\n"
@@ -160,20 +147,17 @@ public class BorrowingServiceImpl implements BorrowingService {
                             + "Please return it immediately.",
                     userEmail, book.getTitle(), bookIsbn, borrowedBook.getDueDate(), daysOverdue, penalty);
 
-            // Check if the book is overdue and send the overdue notification
             if (daysOverdue > 0) {
                 emailSenderService.sendEmail(userEmail, "Overdue Reminder", message);
                 saveNotification(userEmail, message);
             }
         });
 
-        // Fetch all borrowed books and send an immediate email upon borrowing
         List<BorrowedBooks> borrowedBooks = borrowedBooksRepository.findBooksByUserEmail(userEmail);
         borrowedBooks.forEach(borrowedBook -> {
             String bookIsbn = borrowedBook.getBookIsbn();
             Book book = bookRepository.findByIsbn(bookIsbn);
 
-            // Send email immediately after borrowing
             String borrowConfirmationMessage = String.format("Dear %s,\n\n"
                             + "You have successfully borrowed the book \"%s\" (ISBN: %s).\n"
                             + "Due Date: %s\n\n"
@@ -182,14 +166,12 @@ public class BorrowingServiceImpl implements BorrowingService {
 
             emailSenderService.sendEmail(userEmail, "Borrow Confirmation", borrowConfirmationMessage);
 
-            // Save the notification immediately after borrowing
             String borrowNotificationMessage = String.format("You borrowed \"%s\" (ISBN: %s). Due Date: %s",
                     book.getTitle(), bookIsbn, borrowedBook.getDueDate());
             saveNotification(userEmail, borrowNotificationMessage);
         });
     }
 
-    // Helper method to save notifications to the database
     private void saveNotification(String userEmail, String message) {
         Notifications notification = new Notifications();
         notification.setUserEmail(userEmail);

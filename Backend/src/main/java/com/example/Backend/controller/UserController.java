@@ -48,7 +48,6 @@ public class UserController {
         borrowingService.returnBookByAdmin(userEmail, bookIsbn, adminEmail);
     }
 
-    // New API endpoint to fetch all borrowed books by user
     @GetMapping("/admin/borrowedBooks")
     public List<BorrowedBooks> getBorrowedBooksByUser(@RequestParam String userEmail) {
         return borrowingService.getUserBorrowedBooks(userEmail);

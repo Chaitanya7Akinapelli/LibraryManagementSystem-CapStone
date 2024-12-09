@@ -28,10 +28,8 @@ public class UserImpl implements UserService {
         user.setPassword(userDTO.getPassword());
         user.setRole(userDTO.getRole());
 
-        // Save the user to the database
         Users savedUser = userRepository.save(user);
         System.out.println(savedUser);
-        // Convert the saved user back to DTO
         UserDTO savedUserDTO = new UserDTO();
         savedUserDTO.setName(savedUser.getName());
         savedUserDTO.setEmail(savedUser.getEmail());

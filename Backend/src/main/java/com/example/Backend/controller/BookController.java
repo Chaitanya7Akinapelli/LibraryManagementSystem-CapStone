@@ -43,7 +43,6 @@ public class BookController {
 
         Page<Book> resultPage;
 
-        // If both title and author or genre are provided, combine them
         if (title != null && author != null && genre != null) {
             resultPage = bookRepository.findByTitleContainingAndAuthorContainingAndGenreContaining(title, author, genre, PageRequest.of(page, size));
         } else if (title != null && author != null) {
@@ -62,7 +61,6 @@ public class BookController {
             resultPage = bookRepository.findAll(PageRequest.of(page, size));
         }
 
-        // Log the search query
         SearchLogs searchLog = new SearchLogs();
         searchLog.setUserEmail(userEmail);
         searchLog.setSearchQuery("title=" + title + ", author=" + author + ", genre=" + genre);
