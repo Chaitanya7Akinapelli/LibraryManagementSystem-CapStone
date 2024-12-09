@@ -19,7 +19,6 @@ public class UserImpl implements UserService {
 
     @Override
     public UserDTO registerUser(UserDTO userDTO) {
-        // Convert UserDTO to User Entity
         Users user = new Users();
         user.setUserId(userDTO.getUserId());
         user.setName(userDTO.getName());

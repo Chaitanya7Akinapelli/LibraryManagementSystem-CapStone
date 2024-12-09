@@ -37,7 +37,6 @@ public class BorrowingServiceImpl implements BorrowingService {
 
     @Override
     public BorrowedBooks borrowBook(String userEmail, String bookIsbn) throws IllegalStateException {
-        // Check if the book exists and is available
         Book book = bookRepository.findByIsbn(bookIsbn);
         if (book == null) {
             throw new IllegalStateException("Book with ISBN " + bookIsbn + " does not exist.");
@@ -46,7 +45,6 @@ public class BorrowingServiceImpl implements BorrowingService {
             throw new IllegalStateException("This book is currently unavailable.");
         }
 
-        // Check if the user has already borrowed this book and not returned it
         List<BorrowedBooks> borrowedBooks = borrowedBooksRepository.findByUserEmailAndBookIsbn(userEmail, bookIsbn);
         boolean isCurrentlyBorrowed = borrowedBooks.stream()
                 .anyMatch(borrowedBook -> "BORROWED".equalsIgnoreCase(borrowedBook.getStatus()));
@@ -55,7 +53,6 @@ public class BorrowingServiceImpl implements BorrowingService {
             throw new IllegalStateException("You have already borrowed this book and haven't returned it yet.");
         }
 
-        // Create a new BorrowedBooks record and save it
         BorrowedBooks newBorrowedBook = new BorrowedBooks();
         newBorrowedBook.setUserEmail(userEmail);
         newBorrowedBook.setBookIsbn(bookIsbn);
