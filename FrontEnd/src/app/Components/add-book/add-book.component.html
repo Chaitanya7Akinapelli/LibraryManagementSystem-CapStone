@@ -1,19 +1,18 @@
 <app-navbar></app-navbar>
-<body><div class="form-container">
-  <div class="form-section">
-    <h3>Add a New Book</h3>
-    <form (ngSubmit)="addBook()">
-      <input type="text" [(ngModel)]="newBook.title" placeholder="Title" name="title" required />
-      <input type="text" [(ngModel)]="newBook.author" placeholder="Author" name="author" required />
-      <input type="text" [(ngModel)]="newBook.genre" placeholder="Genre" name="genre" />
-      <input type="number" [(ngModel)]="newBook.publicationYear" placeholder="Year" name="year" />
-      <input type="text" [(ngModel)]="newBook.isbn" placeholder="ISBN" name="isbn" />
-      <input type="number" [(ngModel)]="newBook.copiesAvailable" placeholder="Copies" name="copies" />
-      <button type="submit">Add Book</button>
-    </form>
-  </div>
-  <div class="image-section">
-    <img src="./assets/side-image1.jpeg" alt="Book Image" />
-  </div>
-</div>
-</body>
+<form (ngSubmit)="addBook()">
+  <input type="text" [(ngModel)]="newBook.title" placeholder="Title" name="title" required />
+  <input type="text" [(ngModel)]="newBook.author" placeholder="Author" name="author" required />
+  <input type="text" [(ngModel)]="newBook.genre" placeholder="Genre" name="genre" />
+  <input type="number" [(ngModel)]="newBook.publicationYear" placeholder="Year" name="year" />
+  <input
+    type="text"
+    [(ngModel)]="newBook.isbn"
+    placeholder="ISBN"
+    name="isbn"
+    required
+    (ngModelChange)="validateISBN(newBook.isbn)"
+  />
+  <div *ngIf="isbnError" class="error">{{ isbnError }}</div>
+  <input type="number" [(ngModel)]="newBook.copiesAvailable" placeholder="Copies" name="copies" />
+  <button type="submit">Add Book</button>
+</form>

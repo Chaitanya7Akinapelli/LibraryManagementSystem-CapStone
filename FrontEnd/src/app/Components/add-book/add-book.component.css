@@ -107,4 +107,8 @@ form {
   .image-section img {
     max-width: 80%;
   }
+  .error {
+    color: red;
+    font-size: 0.9rem;
+  }
 }
