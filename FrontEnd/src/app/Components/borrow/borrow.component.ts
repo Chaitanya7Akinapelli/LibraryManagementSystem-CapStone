@@ -62,7 +62,6 @@ export class BorrowComponent implements OnInit {
       return;
     }
   
-
     const borrowedBook = this.availableBooks.find(book => book.isbn === isbn);
     if (borrowedBook) {
       this.title = borrowedBook.title;

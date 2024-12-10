@@ -10,10 +10,21 @@ import { Router } from '@angular/router';
 export class UserNavBarComponent {
   constructor(private router: Router){}
 
+  goToUserPage()
+  {
+    this.router.navigate(['/user']);
+  }
+
   goToBorrowBooks(){
     this.router.navigate(['/borrowbooks']);
   }
+
   goToBorrowingHistory(){
     this.router.navigate(['/borrowinghistory']);
+  }
+
+  goToLogin()
+  {
+    this.router.navigate(['/login']);
   }
 }

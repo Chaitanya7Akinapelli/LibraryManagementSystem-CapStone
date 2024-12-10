@@ -13,11 +13,42 @@
     align-items: center;
     justify-items: center;
   }
+
+  .nav-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+    color: #fff;
+    text-decoration: none;
+    font-size: 23px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600;
+  } 
+
+  .nav-menu li a i {
+      font-size: 20px;
+  }
   
   .navbar-container {
     background-color: #e6345d;
     padding: 15px 0;
   }
+  
+  .nav-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 23px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600;
+  }
+
+  .nav-menu li a i {
+      font-size: 20px;
+  }
+
   
   .navbar {
     display: flex;

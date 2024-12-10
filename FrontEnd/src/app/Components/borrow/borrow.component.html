@@ -1,20 +1,35 @@
 <app-user-nav-bar></app-user-nav-bar>
-<div class="available-books">
-  <h3>Available Books</h3>
-  <ul>
-    <li *ngFor="let book of availableBooks">
-      {{ book.title }} by {{ book.author }}
-      <button (click)="borrowBook(book.isbn)">Borrow</button>
-    </li>
-  </ul>
-</div>
+<div class="books-container">
+  <div class="section">
+    <h3>Available Books</h3>
+    <div class="cards-container">
+      <div class="card" *ngFor="let book of availableBooks">
+        <div class="card-header">
+          <h4>{{ book.title }}</h4>
+        </div>
+        <div class="card-body">
+          <p><strong>Author:</strong> {{ book.author }}</p>
+          <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+        </div>
+        <div class="card-footer">
+          <button class="borrow-btn" (click)="borrowBook(book.isbn)">Borrow</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="borrowed-books">
-  <h3>Borrowed Books</h3>
-  <ul>
-    <li *ngFor="let book of borrowedBooks">
-      {{ book.title }} by {{ book.author }}
-      <p>Due Date: {{ book.dueDate | date }}</p>
-    </li>
-  </ul>
+  <div class="section">
+    <h3>Borrowed Books</h3>
+    <div class="cards-container">
+      <div class="card borrowed" *ngFor="let book of borrowedBooks">
+        <div class="card-header">
+          <h4>{{ book.title }}</h4>
+        </div>
+        <div class="card-body">
+          <p><strong>Author:</strong> {{ book.author }}</p>
+          <p><strong>Due Date:</strong> {{ book.dueDate | date }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
